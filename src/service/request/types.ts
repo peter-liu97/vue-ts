@@ -7,7 +7,8 @@ export interface HYRequestInterceptors<T = AxiosResponse> {
   responseInterceptorsCatch?: (error: any) => any
 }
 
-export interface HYAxiosRequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
+export interface HYAxiosRequestConfig<T = AxiosResponse>
+  extends AxiosRequestConfig {
   interceptors?: HYRequestInterceptors<T>
   showLoading?: boolean
 }
