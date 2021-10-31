@@ -10,8 +10,6 @@ module.exports = {
   // }
 
   chainWebpack: (config) => {
-    config.resolve.alias
-      .set('@', path.resolve(__dirname, 'src'))
-      .set('views', '@/views')
+    config.resolve.alias.set('@', path.resolve(__dirname, 'src')).set('views', '@/views')
   }
 }

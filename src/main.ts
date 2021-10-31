@@ -5,7 +5,13 @@ import store from './store'
 import router from './router'
 
 import { globalRegister } from './global'
+import hyRequest from './service/indix'
 
+hyRequest.requist({
+  url: '/home/multidada',
+  method: 'GET'
+})
+// import './service/axios_demo'
 const app = createApp(App)
 app.use(router)
 app.use(store)
