@@ -9,7 +9,21 @@ module.exports = {
   //   }
   // }
 
+  devServer: {
+    proxy: {
+      '^/api': {
+        target: 'http://152.136.185.210:5000',
+        pathRewrite: {
+          '^/api': ''
+        },
+        changOrigin: true
+      }
+    }
+  },
+
   chainWebpack: (config) => {
-    config.resolve.alias.set('@', path.resolve(__dirname, 'src')).set('views', '@/views')
+    config.resolve.alias
+      .set('@', path.resolve(__dirname, 'src'))
+      .set('views', '@/views')
   }
 }
