@@ -41,13 +41,14 @@ const loginModule: Module<ILoginState, IRootState> = {
       const roleId = userInfoResult.data.role.id
 
       commit('changeUserInfo', userInfoResult.data)
-      localChache.setCache('userInfo', userInfoResult)
+      localChache.setCache('userInfo', userInfoResult.data)
 
       const userMenuResult = await requestUserMenusByRoleId(roleId)
       console.log(userMenuResult.data)
 
-      commit('changeUserMenus', userMenuResult)
-      localChache.setCache('userInfo', userMenuResult)
+      commit('changeUserMenus', userMenuResult.data)
+      localChache.setCache('userMenus', userMenuResult.data)
+      //跳转到首页
       router.push('/main')
     },
     loadLocalLogin({ commit }) {
@@ -59,9 +60,9 @@ const loginModule: Module<ILoginState, IRootState> = {
       if (userInfo) {
         commit('userInfo', userInfo)
       }
-      const changeUserMenus = localChache.getCache('changeUserMenus')
-      if (changeUserMenus) {
-        commit('changeUserMenus', changeUserMenus)
+      const userMenus = localChache.getCache('userMenus')
+      if (userMenus) {
+        commit('changeUserMenus', userMenus)
       }
     }
   },
