@@ -7,12 +7,14 @@ import 'normalize.css'
 import './assets/css/index.less'
 
 import { globalRegister } from './global'
-import hyRequest from './service/indix'
+
+import { setupStore } from './store'
 
 const app = createApp(App)
 app.use(router)
 app.use(store)
 // globalRegister(app)
 app.use(globalRegister)
+setupStore()
 
 app.mount('#app')
